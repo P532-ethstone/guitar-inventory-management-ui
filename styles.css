@@ -12,8 +12,6 @@ nav {
 ul {
     display: flex;
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 ul li {
@@ -40,7 +38,80 @@ ul li a:hover {
 
 img {
     display: block;
-    margin: 20px auto; /* Centers horizontally */
-    max-width: 30%; /* Ensures responsiveness */
+    margin: 20px auto;
+    max-width: 30%;
     height: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    font-size: 24px;
+    flex: 1;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgb(61, 187, 230);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.form-container {
+    width: 50%;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+input {
+    background-color: lightblue;
+    flex: 2;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: lightgray;
+    font-weight: bold;
+    color: black;
 }

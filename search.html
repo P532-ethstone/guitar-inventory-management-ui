@@ -15,5 +15,102 @@
             <li><a href="search.html">Search</a></li>
         </ul>
     </nav>
+
+    <div class="form-container">
+        <form>
+            <div class="group">
+                <label>Builder:</label>
+                <input id="guitarBuilder"/>
+            </div>
+            <div class="group">
+                <label>Model:</label>
+                <input id="guitarModel"/>
+            </div>
+            <div class="group">
+                <label>Type:</label>
+                <input id="guitarType"/>
+            </div>
+            <div class="group">
+                <label>Back wood:</label>
+                <input id="guitarBackWood"/>
+            </div>
+            <div class="group">
+                <label>Top wood:</label>
+                <input id="guitarTopWood"/>
+            </div>
+            
+            <div class="button-container">
+                <button type="button" onclick="searchGuitar()">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="table-container">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Serial number</th>
+                    <th>Builder</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>Back wood</th>
+                    <th>Top wood</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr><td colspan='7' height="12px"></td></tr>
+                <tr><td colspan='7' height="12px"></td></tr>
+                <tr><td colspan='7' height="12px"></td></tr>
+                <tr><td colspan='7' height="12px"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function searchGuitar(){
+            let guitars = [
+            {serialNumber: "1", price: "500", builder: "Fender", model: "Custom", type: "Acoustic", backWood: "Indian Rosewood", topWood: "Sitka"},
+            {serialNumber: "2", price: "235", builder: "Martin", model: "Custom", type: "Acoustic", backWood: "Brazilian Rosewood", topWood: "Alder"},
+            {serialNumber: "3", price: "410", builder: "Gibson", model: "Custom", type: "Electric", backWood: "Mahogany", topWood: "Adirondack"},
+            {serialNumber: "4", price: "650", builder: "Collings", model: "Custom", type: "Acoustic", backWood: "Maple", topWood: "Cedar"},
+            {serialNumber: "5", price: "820", builder: "Olson", model: "Custom", type: "Electric", backWood: "Cocobolo", topWood: "Mahogany"}
+            ];
+
+            let builder = document.getElementById("guitarBuilder").value.toLowerCase();
+            let model = document.getElementById("guitarModel").value.toLowerCase();
+            let type = document.getElementById("guitarType").value.toLowerCase();
+            let backWood = document.getElementById("guitarBackWood").value.toLowerCase();
+            let topWood = document.getElementById("guitarTopWood").value.toLowerCase();
+
+            let filteredGuitars = guitars.filter(guitar => 
+            (builder === "" || guitar.builder.toLowerCase().includes(builder)) &&
+            (model === "" || guitar.model.toLowerCase().includes(model)) &&
+            (type === "" || guitar.type.toLowerCase().includes(type)) &&
+            (backWood === "" || guitar.backWood.toLowerCase().includes(backWood)) &&
+            (topWood === "" || guitar.topWood.toLowerCase().includes(topWood)));
+
+            let tableBody = document.getElementById("tableBody");
+            //clear old results
+            tableBody.innerHTML = "";
+
+            if (filteredGuitars.length === 0) {
+                tableBody.innerHTML = "<tr><td colspan='7' style='text-align: center;'>No results found</td></tr>";
+            } 
+            else {
+                filteredGuitars.forEach(guitar => {
+                    const row = `<tr>
+                        <td>${guitar.serialNumber}</td>
+                        <td>${guitar.builder}</td>
+                        <td>${guitar.model}</td>
+                        <td>${guitar.type}</td>
+                        <td>${guitar.backWood}</td>
+                        <td>${guitar.topWood}</td>
+                        <td>${guitar.price}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            }
+        }
+    </script>
 </body>
 </html>

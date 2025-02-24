@@ -15,5 +15,57 @@
             <li><a href="search.html">Search</a></li>
         </ul>
     </nav>
+    <div class="form-container">
+        <form>
+            <div class="group">
+                <label>Serial number:</label>
+                <input id="guitarSerialNum"/>
+            </div>
+            <div class="group">
+                <label>Price:</label>
+                <input id="guitarPrice"/>
+            </div>
+            <div class="group">
+                <label>Builder:</label>
+                <input id="guitarBuilder"/>
+            </div>
+            <div class="group">
+                <label>Model:</label>
+                <input id="guitarModel"/>
+            </div>
+            <div class="group">
+                <label>Type:</label>
+                <input id="guitarType"/>
+            </div>
+            <div class="group">
+                <label>Back wood:</label>
+                <input id="guitarBackWood"/>
+            </div>
+            <div class="group">
+                <label>Top wood:</label>
+                <input id="guitarTopWood"/>
+            </div>
+            
+            <div class="button-container">
+                <button onclick="addTheGuitar()">Add the guitar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        async function addTheGuitar(){
+            let serialNumber = document.getElementById("guitarSerialNum").value;
+            let price = document.getElementById("guitarPrice").value;
+            let builder = document.getElementById("guitarBuilder").value;
+            let model = document.getElementById("guitarModel").value;
+            let type = document.getElementById("guitarType").value;
+            let backWood = document.getElementById("guitarBackWood").value;
+            let topWood = document.getElementById("guitarTopWood").value;
+            let guitar = {serialNumber: serialNumber, price: price, builder: builder, model: model, type: type, backWood: backWood, topWood: topWood};
+
+            const jsonGuitar = JSON.stringify(guitar);
+            alert("Guitar Data:\n" + jsonGuitar)
+        }
+    </script>
 </body>
 </html>
